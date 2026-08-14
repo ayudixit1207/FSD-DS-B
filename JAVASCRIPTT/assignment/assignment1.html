@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Online Shop</title>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">Online Shop</h1>
+
+    <h2>Product List</h2>
+
+    <div id="products"></div>
+
+    <br>
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+
+    <div id="result"></div>
+
+
+    <script>
+
+        let data = {
+            Tea: 120,
+            Coffee: 500,
+            Rice: 600,
+            Sugar: 700
+        };
+
+
+        let products = document.getElementById("products");
+
+
+        for (let item in data) {
+
+            products.innerHTML +=
+                item + " - ₹" + data[item] +
+                " <input type='number' id='" + item + "'>" +
+                "<br><br>";
+        }
+
+
+        function calculateTotal() {
+
+            let total = 0;
+
+            for (let item in data) {
+
+                let quantity =
+                    Number(document.getElementById(item).value);
+
+                total = total + (data[item] * quantity);
+            }
+
+
+            document.getElementById("result").innerHTML =
+                "<h2>Total Payment: ₹" + total + "</h2>" +
+                "<img src='payment.jpg' width='200'>";
+
+        }
+
+    </script>
+
+</body>
+
+</html> 
