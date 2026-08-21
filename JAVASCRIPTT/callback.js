@@ -4,8 +4,8 @@ function sum(a,b) {
 
 function sumWithMsg() {
     const ressult=clbk(20,30);
-    const fresult="HI"+msg+"your add is="+result;
+    const fresult="HI"+msg+"your score is="+result;
     console.log(fresult);
 
 }
-sumWithMsg(sum)
+sumWithMsg(sum,"MR.Aayush");
