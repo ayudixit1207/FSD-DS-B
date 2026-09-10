@@ -27,9 +27,20 @@
                 
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="Data"></tbody>
     </table>
      <script>
+      const ele =  document.getElementById("Data");
+      const url="https://dummyjson.com/products";
+      async function loadData(){
+        try {
+            const res= await fetch(url);
+
+        }
+        catch() {
+
+        }
+      }
 
      </script>
 </body>
