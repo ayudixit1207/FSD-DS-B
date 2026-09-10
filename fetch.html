@@ -5,56 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY SHOP</title>
     <style>
-        table {
-            width: 80%;
-            margin: auto;
-            padding: 20 px;
-            color: red;
-            border: 2px solid black;
+        img{
+            height: 100px;
+            width: 100px;
+        }
+        table{
+            width:80%;
+            margin:auto;
+            padding:10px;
+            font-size: 25px;
+            color:brown;
+            border: 2px solid red;
         }
     </style>
 </head>
 <body>
     <table>
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Category</th>
-                <th>Price</th>
-                
-            </tr>
-        </thead>
+        <thead><tr>
+            <th> S.no</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr> </thead>
         <tbody id="data">
-
+           
         </tbody>
     </table>
-     <script>
-       const ele=document.getElementById("data");
-       const url="https://dummyjson.com/products";
-       async function loadData(){
+<script>
+    const ele=document.getElementById("data");
+    const URL="https://dummyjson.com/products";
+    async function loadData(){
         try{
-            const res=await  fetch(url);  //data converted into string 
-            const data=await res.json(); //converter
-            console.log("DATA",data.products);  //picks data from the api
+            const res= await fetch(URL);
+            const data=await res.json(); //convert all data into string 
+            console.log("DATA",data.products);
             let row="";
-            data.products.map((i , index)=>{  //to put map function  , i indicate array element , index indicates the S.No 
+            data.products.map((i,index)=>{
                 row+=`
-                <tr> 
+                <tr>
                     <td>${index+1}</td>
-                    <td>${i.title}</td>
-                    <td>${i.image}</td>
+                     <td>${i.title}</td>
+                    <td><img src="${i.images[0]}"/></td>
                     <td>${i.category}</td>
-                    <td>$${i.price}</td>
-                </tr>
-                ` ; // symbol TIL ( `` ) is used to write literals in js 
+                     <td>${i.price}</td>
+                        </tr>
+                    `;
+                    ele.innerHTML=row;
             })
         }
-        catch(){
-
+        catch(err){
+            console.log("ERROR",err); // catch is always same just error will be changed like network error and all
         }
-       }
-     </script>
+    }
+    loadData();
+</script>
 </body>
 </html>
