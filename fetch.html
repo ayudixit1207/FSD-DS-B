@@ -8,8 +8,7 @@
         table {
             width: 80%;
             margin: auto;
-            padding: 10 px;
-            font-size:25px;
+            padding: 20 px;
             color: red;
             border: 2px solid black;
         }
@@ -27,31 +26,35 @@
                 
             </tr>
         </thead>
-        <tbody id="Data"></tbody>
+        <tbody id="data">
+
+        </tbody>
     </table>
      <script>
-      const ele =  document.getElementById("Data");
-      const url="https://dummyjson.com/products";
-      async function loadData(){
-        try {
-            const res= await fetch(url);
-            const data =await res.json;
-            console.log("Data",data.products)
-            let row ="";
-            data.products.map((i,index)=> {
-                row+='';
-                             
-
+       const ele=document.getElementById("data");
+       const url="https://dummyjson.com/products";
+       async function loadData(){
+        try{
+            const res=await  fetch(url);  //data converted into string 
+            const data=await res.json(); //converter
+            console.log("DATA",data.products);  //picks data from the api
+            let row="";
+            data.products.map((i , index)=>{  //to put map function  , i indicate array element , index indicates the S.No 
+                row+=`
+                <tr> 
+                    <td>${index+1}</td>
+                    <td>${i.title}</td>
+                    <td>${i.image}</td>
+                    <td>${i.category}</td>
+                    <td>$${i.price}</td>
+                </tr>
+                ` ; // symbol TIL ( `` ) is used to write literals in js 
             })
-
-
+        }
+        catch(){
 
         }
-        catch() {
-
-        }
-      }
-
+       }
      </script>
 </body>
 </html>
