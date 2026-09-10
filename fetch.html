@@ -35,6 +35,16 @@
       async function loadData(){
         try {
             const res= await fetch(url);
+            const data =await res.json;
+            console.log("Data",data.products)
+            let row ="";
+            data.products.map((i,index)=> {
+                row+='';
+                             
+
+            })
+
+
 
         }
         catch() {
